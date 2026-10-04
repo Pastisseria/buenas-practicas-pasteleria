@@ -1,3 +1,4 @@
+import ReceptionControl from './ReceptionControl.jsx'
 import React, { useMemo, useState } from 'react'
 import { ShieldCheck, Thermometer, Sparkles, PackageCheck, Droplets, FileText, Users, TriangleAlert, ClipboardCheck, BookOpenCheck, ChevronRight, Menu, X, Wrench, Tags, Printer, ArrowLeft, CheckCircle2 } from 'lucide-react'
 
@@ -23,7 +24,7 @@ const sections = [
  ['Temperaturas','Control y seguimiento de temperaturas',Thermometer],
  ['Plan de limpieza','Tareas, frecuencias y registros de limpieza',Sparkles],
  ['Plan de mantenimiento','Mantenimiento preventivo de equipos e instalaciones',Wrench,'maintenance'],
- ['Control de recepción','Recepción de mercancías y documentación',PackageCheck],
+ ['Control de recepción','Recepción de mercancías y documentación',PackageCheck,'reception'],
  ['Aceite y agua','Recogidas de aceite, controles y facturas de agua',Droplets],
  ['Documentación','Fichas técnicas y documentación sanitaria',FileText],
  ['Modelo de etiquetas','Crear, editar e imprimir etiquetas de producto',Tags,'labels'],
@@ -43,7 +44,7 @@ function App(){
  return <div className="app">
    <aside className={open?'sidebar open':'sidebar'}><div className="brand"><div className="mark">BP</div><div><b>Buenas Prácticas</b><span>Pastelería</span></div><button className="close" onClick={()=>setOpen(false)}><X/></button></div><nav><Nav/></nav></aside>
    <main><header><button className="menu" onClick={()=>setOpen(true)}><Menu/></button><div><h1>Buenas Prácticas Pastelería</h1><p>Control sanitario y documental</p></div><div className="today">Panel general</div></header>
-   {page==='dashboard'&&<Dashboard go={go}/>} {page==='maintenance'&&<Maintenance checks={checks} setChecks={setChecks} done={done} go={go}/>} {page==='labels'&&<Labels label={label} setLabel={setLabel} go={go}/>} </main>
+   {page==='dashboard'&&<Dashboard go={go}/>} {page==='maintenance'&&<Maintenance checks={checks} setChecks={setChecks} done={done} go={go}/>} {page==='labels'&&<Labels label={label} setLabel={setLabel} go={go}/>} {page==='reception'&&<ReceptionControl go={go}/>} </main>
  </div>
 }
 
